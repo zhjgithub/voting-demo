@@ -1,5 +1,5 @@
 votinglb:
-  image: tutum/haproxy
+  image: dockercloud/haproxy
   links:
     - voting
   ports:
