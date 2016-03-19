@@ -1,7 +1,6 @@
 #!/bin/bash
 python app.py > /dev/null &
 sleep 5
-echo -e "entering if"
 if curl http://localhost:80 | grep -q '<b>Visits:</b> 1<br/>'; then
   echo -e "\e[42m------------"
   echo -e "\e[92mTests passed"
