@@ -1,21 +1,24 @@
+redis:
+  image: 'redis:latest'
+results:
+  image: 'pkennedyr/results:latest'
+  autoredeploy: true
+  links:
+    - redis
+  ports:
+    - '8000:80'
+  restart: always
+voting:
+  image: 'pkennedyr/voting:latest'
+  autoredeploy: true
+  links:
+    - redis
+  restart: always
 votinglb:
-  image: dockercloud/haproxy
+  image: 'dockercloud/haproxy:latest'
   links:
     - voting
   ports:
     - '80:80'
   roles:
     - global
-results:
-  image: tutum/results-demo
-  links:
-    - redis
-  ports:
-    - '8000:80'
-voting:
-  image: tutum/voting-demo
-  links:
-    - redis
-  target_num_containers: 3
-redis:
-  image: redis
