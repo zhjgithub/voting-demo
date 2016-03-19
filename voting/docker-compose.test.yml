@@ -2,6 +2,6 @@ sut:
   image: this
   links:
     - redis
-  command: echo "Tests pass!"
+  command: echo /app/tests.sh
 redis:
   image: redis
