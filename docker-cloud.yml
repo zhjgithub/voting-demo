@@ -1,19 +1,20 @@
 redis:
   image: 'redis:latest'
 results:
-  image: 'pkennedyr/results:latest'
   autoredeploy: true
+  image: 'cloudorg/results:latest'
   links:
     - redis
   ports:
     - '8000:80'
   restart: always
 voting:
-  image: 'pkennedyr/voting:latest'
   autoredeploy: true
+  image: 'cloudorg/voting:latest'
   links:
     - redis
   restart: always
+  target_num_containers: 4
 votinglb:
   image: 'dockercloud/haproxy:latest'
   links:
